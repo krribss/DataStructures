@@ -6,11 +6,11 @@ class LinkedList:
     def __init__(self):
         self.head=None
 
-    def insertAtBegin(self,data):
+    def insert_at_begin(self,data):
         node=Node(data,self.head)
         self.head=node
 
-    def insertAtEnd(self,data):
+    def insert_at_end(self,data):
         cur=self.head
         if cur is None:
             self.head=Node(data,None)
@@ -19,11 +19,11 @@ class LinkedList:
             cur=cur.next
         cur.next=Node(data,None)
 
-    def insertValues(self,data_list):
+    def insert_values(self,data_list):
         for data in data_list:
-            self.insertAtEnd(data)
+            self.insert_at_end(data)
 
-    def getLength(self):
+    def get_length(self):
         cur=self.head
         count=0
         while cur:
@@ -31,7 +31,25 @@ class LinkedList:
             cur=cur.next
         return count
 
-    def printList(self):
+    def remove_at_index(self, index):
+        count=0
+        if index<0 or index>=self.get_length():
+            raise Exception("Invalid Index")
+        if index==0:
+            self.head=self.head.next
+        else:
+            cur=self.head
+            while cur:
+                if count==index-1:
+                    cur.next=cur.next.next
+                    break
+                cur=cur.next
+                count+=1
+
+
+
+
+    def print_list(self):
         cur=self.head
         if cur is None:
             print("List is empty")
@@ -44,11 +62,12 @@ class LinkedList:
 
 if __name__=='__main__':
     ll=LinkedList()
-    ll.insertAtBegin(15)
-    ll.insertAtBegin(10)
-    ll.insertAtBegin(5)
-    ll.insertAtEnd(20)
-    ll.insertAtEnd(25)
-    ll.insertValues(["banana","Mango","Grapes","Orange"])
-    print("Length of the linked list : ",ll.getLength())
-    ll.printList()
+    ll.insert_at_begin(15)
+    ll.insert_at_begin(10)
+    ll.insert_at_begin(5)
+    ll.insert_at_end(20)
+    ll.insert_at_end(25)
+    ll.insert_values(["banana","Mango","Grapes","Orange"])
+    ll.remove_at_index(2)
+    print("Length of the linked list : ",ll.get_length())
+    ll.print_list()
