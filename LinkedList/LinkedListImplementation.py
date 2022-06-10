@@ -19,6 +19,10 @@ class LinkedList:
             cur=cur.next
         cur.next=Node(data,None)
 
+    def insertValues(self,data_list):
+        for data in data_list:
+            self.insertAtEnd(data)
+
     def printList(self):
         cur=self.head
         if cur is None:
@@ -30,9 +34,6 @@ class LinkedList:
             cur=cur.next
 
 
-
-
-
 if __name__=='__main__':
     ll=LinkedList()
     ll.insertAtBegin(15)
@@ -40,4 +41,5 @@ if __name__=='__main__':
     ll.insertAtBegin(5)
     ll.insertAtEnd(20)
     ll.insertAtEnd(25)
+    ll.insertValues(["banana","Mango","Grapes","Orange"])
     ll.printList()
