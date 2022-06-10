@@ -10,6 +10,15 @@ class LinkedList:
         node=Node(data,self.head)
         self.head=node
 
+    def insertAtEnd(self,data):
+        cur=self.head
+        if cur is None:
+            self.head=Node(data,None)
+            return
+        while cur.next:
+            cur=cur.next
+        cur.next=Node(data,None)
+
     def printList(self):
         cur=self.head
         if cur is None:
@@ -26,7 +35,9 @@ class LinkedList:
 
 if __name__=='__main__':
     ll=LinkedList()
-    ll.insertAtBegin(5)
-    ll.insertAtBegin(10)
     ll.insertAtBegin(15)
+    ll.insertAtBegin(10)
+    ll.insertAtBegin(5)
+    ll.insertAtEnd(20)
+    ll.insertAtEnd(25)
     ll.printList()
