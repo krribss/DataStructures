@@ -46,8 +46,21 @@ class LinkedList:
                 cur=cur.next
                 count+=1
 
-
-
+    def insert_at_index(self,index,data):
+        count=0
+        if index<0 or index>self.get_length():
+            raise Exception("Invalid Index")
+        if index==0:
+            self.insert_at_begin(data)
+        else:
+            cur=self.head
+            while cur:
+                if count==index-1:
+                    addr=cur.next
+                    cur.next=Node(data,addr)
+                    break
+                cur=cur.next
+                count+=1
 
     def print_list(self):
         cur=self.head
@@ -69,5 +82,6 @@ if __name__=='__main__':
     ll.insert_at_end(25)
     ll.insert_values(["banana","Mango","Grapes","Orange"])
     ll.remove_at_index(2)
+    ll.insert_at_index(0,"Hello")
     print("Length of the linked list : ",ll.get_length())
     ll.print_list()
