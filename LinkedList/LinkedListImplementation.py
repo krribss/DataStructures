@@ -62,6 +62,36 @@ class LinkedList:
                 cur=cur.next
                 count+=1
 
+    def insert_after_value(self, data_after, data_to_insert):
+        cur=self.head
+        while cur:
+            if(cur.data==data_after):
+                addr=cur.next
+                cur.next=Node(data_to_insert,addr)
+                return
+            cur=cur.next
+
+        print("No data matching")
+
+
+    def remove_by_value(self, data):
+        cur=self.head
+        if self.head is None:
+            print("empty list")
+            return
+
+        if(cur.data==data):
+            self.head=self.head.next
+            return
+
+        while cur.next:
+            if(cur.next.data==data):
+                cur.next=cur.next.next
+                return
+            cur=cur.next
+        print("No matching data to remove")
+
+
     def print_list(self):
         cur=self.head
         if cur is None:
@@ -83,5 +113,7 @@ if __name__=='__main__':
     ll.insert_values(["banana","Mango","Grapes","Orange"])
     ll.remove_at_index(2)
     ll.insert_at_index(0,"Hello")
+    ll.insert_after_value(25,30)
+    ll.remove_by_value(20)
     print("Length of the linked list : ",ll.get_length())
     ll.print_list()
